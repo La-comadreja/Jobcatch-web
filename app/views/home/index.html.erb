@@ -1,2 +1,26 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+CTYPE HTML>
+<html>
+  <head>
+    <title>Jobcatch</title>
+      <script type="text/javascript" charset="utf-8" src="cordova-1.5.0.js"></script>
+  </head>
+
+  <body>
+    <h1 style="text-align:center;">Jobcatch</h1>
+
+    <form action='http://www.indeed.com/jobs' METHOD='GET'>
+      <table cellspacing='0' style='font-family:arial'>
+        <tr><td style='font-size:16px;color:#FF6600'><b>what</b></td></tr>
+        <tr><td><input name='q' value='' size='15'></td></tr>
+        <tr><td style='font-size:10px'>job title, keywords</td></tr>
+        <tr><td style='font-size:16px;color:#FF6600'><b>where</b></td></tr>
+        <tr><td><input name='l' value='' size='15'></td></tr>
+        <tr><td style='font-size:10px'>city, state, zip</td></tr>
+        <tr><td><input type='submit' value='Find Jobs'></tr>
+        <tr><td style='width:116px'><a href='http://www.indeed.com/'><img border='0' 
+        src='http://www.indeed.com/images/poweredbyindeed.gif'></a></td></tr>
+      </table>
+    </form>
+  </body>
+</html>
+

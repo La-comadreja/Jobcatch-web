@@ -26,6 +26,7 @@ group :production do
 end
 
 gem 'bootstrap-sass', '2.1'
+gem 'devise'
 gem 'jquery-rails', '2.0.2'
 
 # To use ActiveModel has_secure_password

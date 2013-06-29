@@ -1,5 +1,8 @@
 JobcatchWeb::Application.routes.draw do
-  devise_for :users
+  resources :jobs
+
+
+  get "jobs/index"
 
   get "home/index"
 

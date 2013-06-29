@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jobcatch</title>
+    <title>Jobcatcher</title>
     <link href="/assets/boot-business.css" rel="stylesheet">
     <link href="/assets/font-awesome.css" rel="stylesheet">
     <link href="/assets/font-awesome-ie7.css" rel="stylesheet">
@@ -13,19 +13,19 @@
       <div class="container">
         <div class="row">
           <div class="span6 offset3">
-            <h2 class="widget-header">Jobcatch</h2>
+            <h2 class="widget-header" style="color:#555555;font-weight:bold;">Jobcatcher</h2>
             <div class="widget-body">
               <div class="center-align">
-                <form class="form-horizontal form-signin-signup" action="http://www.indeed.com/jobs" METHOD="GET">
+                <form class="form-horizontal form-signin-signup" >
+                  <%= form_for @job do |f| %>
                   <table cellspacing='0' style='font-family:arial;text-align:left;margin-left:auto;margin-right:auto;'>
                     <tr><td style='font-size:16px;color:#FF6600'><b>what type of job</b></td></tr>
                     <tr><td><input name='q' placeholder='job title, keywords' value='' size='15'></td></tr>
                     <tr><td style='font-size:16px;color:#FF6600'><b>where</b></td></tr>
                     <tr><td><input name='l' placeholder='city, state, zip' value='' size='15'></td></tr>
-                    <tr><td><input type='submit' value='Find Jobs'></tr>
-                    <tr><td style='width:116px'><a href='http://www.indeed.com/'><img border='0'
-                      src='http://www.indeed.com/images/poweredbyindeed.gif'></a></td></tr>
+                    <tr><td><%= f.submit "Find Jobs" %></tr>
                   </table>
+                  <% end %>
                 </form>
                 <form class="form-horizontal form-signin-signup">
                   <input type="text" name="email" placeholder="Email">

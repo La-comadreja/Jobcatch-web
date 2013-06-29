@@ -1,10 +1,8 @@
 JobcatchWeb::Application.routes.draw do
   resources :jobs
 
-
-  get "jobs/index"
-
-  get "home/index"
+  match "/jobs" =>"jobs#index"
+  get "home/index"  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

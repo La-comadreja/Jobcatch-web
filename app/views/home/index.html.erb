@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jobcatcher</title>
     <link href="/assets/boot-business.css" rel="stylesheet">
-    <link href="/assets/font-awesome.css" rel="stylesheet">
-    <link href="/assets/font-awesome-ie7.css" rel="stylesheet">
   </head>
   <body>
     <div class="content">
@@ -17,7 +15,7 @@
             <div class="widget-body">
               <div class="center-align">
                 <form class="form-horizontal form-signin-signup" >
-                  <%= form_for @job do |f| %>
+                <%= form_for(jobs_path, :method => :put) do |f| %>
                   <table cellspacing='0' style='font-family:arial;text-align:left;margin-left:auto;margin-right:auto;'>
                     <tr><td style='font-size:16px;color:#FF6600'><b>what type of job</b></td></tr>
                     <tr><td><input name='q' placeholder='job title, keywords' value='' size='15'></td></tr>
@@ -25,8 +23,11 @@
                     <tr><td><input name='l' placeholder='city, state, zip' value='' size='15'></td></tr>
                     <tr><td><%= f.submit "Find Jobs" %></tr>
                   </table>
-                  <% end %>
+                <% end %>
                 </form>
+
+                <%= render :partial => "jobs/search" %>
+
                 <form class="form-horizontal form-signin-signup">
                   <input type="text" name="email" placeholder="Email">
                   <input type="password" name="password" placeholder="Password">

@@ -3,6 +3,12 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
     @jobs = Job.all
+    
+    search_string = URI.escape("http://www.indeed.com/jobs?q=" + params[:q] + "&l=" + params[:l])
+    page = Nokogiri::HTML(open(search_string))
+    @companies = page.css("span[class='company']")
+    @locations = page.css("span[class='location']")
+    @summaries = page.css("span[class='summary']")
 
     respond_to do |format|
       format.html # index.html.erb

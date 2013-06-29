@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+require 'open-uri'
+require 'rubygems'
 
 gem 'rails', '3.2.13'
 ruby '1.9.3'
@@ -29,6 +31,7 @@ end
 gem 'bootstrap-sass', '2.1'
 gem 'devise'
 gem 'jquery-rails', '2.0.2'
+gem 'nokogiri'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

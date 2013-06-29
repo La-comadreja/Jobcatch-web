@@ -1,5 +1,10 @@
 <h1>Listing jobs</h1>
 
+  <%= for i in 0...@companies.length do %>
+    <%= @companies[i].text %> - <%= @locations[i].text %><br>
+    <%= @summaries[i].text %><br><br>
+  <% end %>
+
 <table>
   <tr>
     <th>Company</th>

@@ -1,32 +1,60 @@
-<h1>Listing jobs</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobcatcher</title>
+    <link href="/assets/boot-business.css" rel="stylesheet" />
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+    <script src="https://raw.github.com/allmarkedup/purl/master/purl.js"></script>
+  </head>
+  <body>
+    <div class="content">
+      <div class="container">
+        <div class="row">
+          <div class="span6 offset3">
+            <h2 class="widget-header">Jobcatcher</h2>
+            <div class="widget-body">
+              <div class="center-align">
+                <% j = params[:place].to_i %>
+                <%= @companies[j].text %> - <%= @locations[j].text %><br>
+                <%= @summaries[j].text %><br><br><br>
+               
+                <script type="text/javascript">
+                  var j = parseInt($.url().param('place'));
+                  function increment() {
+                    j++;
+                    document.nextJob.q.value = $.url().param('q');
+                    document.nextJob.l.value = $.url().param('l');
+                    document.nextJob.place.value = j;
+                    return true;
+                  }
+                </script> 
+                <form action="/jobs" name="nextJob" onsubmit="return increment();">
+                  <input type="hidden" name="q">
+                  <input type="hidden" name="l">
+                  <input type="hidden" name="place">
+                  <input type="image" src="/assets/dislike.jpg" alt="Submit" />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="image" src="/assets/like.jpg" alt="Submit" />
+                </form>                
 
-  <%= for i in 0...@companies.length do %>
-    <%= @companies[i].text %> - <%= @locations[i].text %><br>
-    <%= @summaries[i].text %><br><br>
-  <% end %>
+                <form class="form-horizontal form-signin-signup">
+                  <input type="text" name="email" placeholder="Email">
+                  <input type="password" name="password" placeholder="Password">
+                  <input type="password" name="password_confirmation" placeholder="Password Confirmation">
+                  <div>
+                    <input type="submit" value="Signup" class="btn btn-primary btn-large">
+                  </div>
+                </form>
+                <h4><i class="icon-question-sign"></i> Already have an account?</h4>
+                <a href="signin.html" class="btn btn-large bottom-space">Signin</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
 
-<table>
-  <tr>
-    <th>Company</th>
-    <th>Location</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @jobs.each do |job| %>
-  <tr>
-    <td><%= job.company %></td>
-    <td><%= job.location %></td>
-    <td><%= job.description %></td>
-    <td><%= link_to 'Show', job %></td>
-    <td><%= link_to 'Edit', edit_job_path(job) %></td>
-    <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Job', new_job_path %>

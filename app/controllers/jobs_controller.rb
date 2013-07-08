@@ -3,8 +3,14 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
     @jobs = Job.all
+
+    q = params[:q]
+    l = params[:l]
+    q = "" if params[:q].nil?
+    l = "" if params[:l].nil?
     
-    search_string = URI.escape("http://www.indeed.com/jobs?q=" + params[:q] + "&l=" + params[:l])
+    search_string = URI.escape("http://www.indeed.com/jobs?q=" + q + "&l=" + l)
+
     page = Nokogiri::HTML(open(search_string))
     @companies = page.css("span[class='company']")
     @locations = page.css("span[class='location']")

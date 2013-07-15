@@ -1,4 +1,6 @@
 JobcatchWeb::Application.routes.draw do
+  devise_for :users
+
   resources :jobs
 
   match "/jobs" =>"jobs#index"

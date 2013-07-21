@@ -23,14 +23,19 @@
                   <%= @companies[j].text %> - <%= @locations[j].text %><br>
                   <%= @summaries[j].text %><br><br><br>
                 <% end %>
-               
                 <script type="text/javascript">
                   var j = parseInt($.url().param('place'));
+                  var start = parseInt($.url().param('start'));
                   function increment() {
                     j++;
                     document.nextJob.q.value = $.url().param('q');
                     document.nextJob.l.value = $.url().param('l');
+                    if (document.nextJob.nextPage.value === "1") {
+                      start += 10;
+                      j = 0;
+                    }
                     document.nextJob.place.value = j;
+                    document.nextJob.start.value = start;
                     return true;
                   }
                 </script> 
@@ -38,6 +43,12 @@
                   <input type="hidden" name="q">
                   <input type="hidden" name="l">
                   <input type="hidden" name="place">
+                  <% if !@companies[j].nil? && @companies[j+1].nil? %>
+                    <input type="hidden" name="nextPage" value="1">
+                  <% else %>
+                    <input type="hidden" name="nextPage" value="0">
+                  <% end %>
+                  <input type="hidden" name="start">
                   <input type="image" src="/assets/dislike.jpg" alt="Submit" />
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <input type="image" src="/assets/like.jpg" alt="Submit" />

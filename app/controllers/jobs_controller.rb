@@ -6,10 +6,11 @@ class JobsController < ApplicationController
 
     q = params[:q]
     l = params[:l]
+    start = params[:start]
     q = "" if params[:q].nil?
     l = "" if params[:l].nil?
     
-    search_string = URI.escape("http://www.indeed.com/jobs?q=" + q + "&l=" + l)
+    search_string = URI.escape("http://www.indeed.com/jobs?q=" + q + "&l=" + l + "&start=" + start)
 
     page = Nokogiri::HTML(open(search_string))
     @companies = page.css("span[class='company']")

@@ -14,6 +14,15 @@ class JobsController < ApplicationController
 
     page = Nokogiri::HTML(open(search_string))
     @titles = page.css(".jobtitle")
+    @hrefs = page.css(".jobtitle a")
+    i = 0
+    @titles.each do |title|
+      if title[:href].nil?
+        external_link = @hrefs[i].to_s.split("href=")[1]
+        title[:href] = external_link.split[0].delete!("\"") if !external_link.nil?
+        i += 1
+      end
+    end
     @companies = page.css("span[class='company']")
     @locations = page.css("span[class='location']")
     @summaries = page.css("span[class='summary']")

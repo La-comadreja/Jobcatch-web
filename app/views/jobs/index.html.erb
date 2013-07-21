@@ -17,7 +17,7 @@
     <% else %>
       <%= @titles[j].text %><br>
       <%= @companies[j].text %> - <%= @locations[j].text %><br><br>
-      <%= @summaries[j].text %><br><br><br>
+      <a href="http://www.indeed.com/<%= @titles[j][:href] %>" target=_blank><%= @summaries[j].text %></a><br><br><br>
       <script type="text/javascript">
         var j = parseInt($.url().param('place'));
         var start = parseInt($.url().param('start'));

@@ -13,7 +13,8 @@
     <% if @companies[j].nil? %>
       <h3><%= message = "We're sorry, no jobs to catch." %></h3><br>
     <% else %>
-      <%= @companies[j].text %> - <%= @locations[j].text %><br>
+      <%= @titles[j].text %><br>
+      <%= @companies[j].text %> - <%= @locations[j].text %><br><br>
       <%= @summaries[j].text %><br><br><br>
     <% end %>
     <script type="text/javascript">

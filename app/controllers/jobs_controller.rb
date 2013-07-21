@@ -13,6 +13,7 @@ class JobsController < ApplicationController
     search_string = URI.escape("http://www.indeed.com/jobs?q=" + q + "&l=" + l + "&start=" + start)
 
     page = Nokogiri::HTML(open(search_string))
+    @titles = page.css(".jobtitle")
     @companies = page.css("span[class='company']")
     @locations = page.css("span[class='location']")
     @summaries = page.css("span[class='summary']")

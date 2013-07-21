@@ -7,30 +7,17 @@
     <link href="/assets/boot-business.css" rel="stylesheet">
   </head>
   <body>
-    <div class="content">
-      <div class="container">
-        <div class="row">
-          <div class="span6 offset3">
-            <h2 class="widget-header">Jobcatcher</h2>
-            <div class="widget-body">
-              <div class="center-align">
-                <form class="form-horizontal form-signin-signup" method="get" action="/jobs">
-                  <table cellspacing='0' style='font-family:arial;text-align:left;margin-left:auto;margin-right:auto;'>
-                    <tr><td style='font-size:16px;color:#FF6600'><b>what type of job</b></td></tr>
-                    <tr><td><input name='q' placeholder='job title, keywords' value='' size='15'></td></tr>
-                    <tr><td style='font-size:16px;color:#FF6600'><b>where</b></td></tr>
-                    <tr><td><input name='l' placeholder='city, state, zip' value='' size='15'></td></tr>
-                    <input type='hidden' name='place' value='0'>
-                    <input type='hidden' name='start' value='0'>
-                    <tr><td><input type='submit' value='Find Jobs'</tr>
-                  </table>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <form class="form-horizontal form-signin-signup" method="get" action="/jobs">
+      <table cellspacing='0' style='font-family:arial;text-align:left;margin-left:auto;margin-right:auto;'>
+        <tr><td style='font-size:16px;color:#FF6600'><b>what type of job</b></td></tr>
+        <tr><td><input name='q' placeholder='job title, keywords' value='' size='15'></td></tr>
+        <tr><td style='font-size:16px;color:#FF6600'><b>where</b></td></tr>
+        <tr><td><input name='l' placeholder='city, state, zip' value='' size='15'></td></tr>
+        <input type='hidden' name='place' value='0'>
+        <input type='hidden' name='start' value='0'>
+        <tr><td><input type='submit' value='Find Jobs'</tr>
+      </table>
+    </form>
   </body>
 </html>
 

@@ -11,15 +11,26 @@
   <link href="/assets/jobs.css" rel="stylesheet">
 </head>
 <body>
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="span6 offset3">
+          <h2 class="widget-header">Jobcatcher</h2>
+          <div class="widget-body">
+            <div class="center-align">
+              <% if notice %>
+                <p class="alert alert-notice"><%= notice %></p>
+              <% end %>
+              <% if alert %>
+                <p class="alert alert-error"><%= alert %></p>
+              <% end %>
 
-  <% if notice %>
-    <p class="alert alert-notice"><%= notice %></p>
-  <% end %>
-  <% if alert %>
-    <p class="alert alert-error"><%= alert %></p>
-  <% end %>
-
-  <%= yield %>
-
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

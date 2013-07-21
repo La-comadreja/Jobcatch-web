@@ -11,42 +11,44 @@
   <body>
     <% j = params[:place].to_i %>
     <% if @companies[j].nil? %>
-      <h3><%= message = "We're sorry, no jobs to catch." %></h3><br>
+      <h4>We're sorry, no jobs to catch.</h4><br>
+      <h3>Try again</h3>
+      <%= render :partial => "jobs/search" %>
     <% else %>
       <%= @titles[j].text %><br>
       <%= @companies[j].text %> - <%= @locations[j].text %><br><br>
       <%= @summaries[j].text %><br><br><br>
-    <% end %>
-    <script type="text/javascript">
-      var j = parseInt($.url().param('place'));
-      var start = parseInt($.url().param('start'));
-      function increment() {
-        j++;
-        document.nextJob.q.value = $.url().param('q');
-        document.nextJob.l.value = $.url().param('l');
-        if (document.nextJob.nextPage.value === "1") {
-          start += 10;
-          j = 0;
+      <script type="text/javascript">
+        var j = parseInt($.url().param('place'));
+        var start = parseInt($.url().param('start'));
+        function increment() {
+          j++;
+          document.nextJob.q.value = $.url().param('q');
+          document.nextJob.l.value = $.url().param('l');
+          if (document.nextJob.nextPage.value === "1") {
+            start += 10;
+            j = 0;
+          }
+          document.nextJob.place.value = j;
+          document.nextJob.start.value = start;
+          return true;
         }
-        document.nextJob.place.value = j;
-        document.nextJob.start.value = start;
-        return true;
-      }
-    </script> 
-    <form action="/jobs" name="nextJob" onsubmit="return increment();">
-      <input type="hidden" name="q">
-      <input type="hidden" name="l">
-      <input type="hidden" name="place">
-      <% if !@companies[j].nil? && @companies[j+1].nil? %>
-        <input type="hidden" name="nextPage" value="1">
-      <% else %>
-        <input type="hidden" name="nextPage" value="0">
-      <% end %>
-      <input type="hidden" name="start">
-      <input type="image" src="/assets/dislike.jpg" alt="Submit" />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <input type="image" src="/assets/like.jpg" alt="Submit" />
-    </form>                
+      </script> 
+      <form action="/jobs" name="nextJob" onsubmit="return increment();">
+        <input type="hidden" name="q">
+        <input type="hidden" name="l">
+        <input type="hidden" name="place">
+        <% if !@companies[j].nil? && @companies[j+1].nil? %>
+          <input type="hidden" name="nextPage" value="1">
+        <% else %>
+          <input type="hidden" name="nextPage" value="0">
+        <% end %>
+        <input type="hidden" name="start">
+        <input type="image" src="/assets/dislike.jpg" alt="Submit" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="image" src="/assets/like.jpg" alt="Submit" />
+      </form>
+    <% end %>              
   </body>
 </html>
 

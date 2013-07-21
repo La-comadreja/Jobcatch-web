@@ -12,7 +12,7 @@
     <% j = params[:place].to_i %>
     <% if @companies[j].nil? %>
       <h4>We're sorry, no jobs to catch.</h4><br>
-      <h3>Try again</h3>
+      <h3>Try Again</h3>
       <%= render :partial => "jobs/search" %>
     <% else %>
       <%= @titles[j].text %><br>

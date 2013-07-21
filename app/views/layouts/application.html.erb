@@ -19,14 +19,6 @@
             <a href="/">Jobcatcher</a><br>
           </h2>
           <div class="widget-body">
-            <div style="text-align:right;">
-              <% if user_signed_in? %>
-                Browsing jobs as <%= current_user.name %>
-              <% else %>
-                <%= link_to 'Log In', new_user_session_path %> or <%= link_to 'Register', new_user_registration_path %><br>
-                Save and share<br>your job interests.<br>
-                <% end %>
-            </div>
             <div class="center-align">
               <% if notice %>
                 <p class="alert alert-notice"><%= notice %></p>

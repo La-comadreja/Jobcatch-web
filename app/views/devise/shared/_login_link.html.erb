@@ -1,6 +1,6 @@
 <div style="text-align:right;">
   <% if user_signed_in? %>
-    Browsing jobs as <%= current_user.name %>
+    Fishing as <b><%= current_user.name %></b><br><br>
   <% else %>
     <%= link_to 'Log In', new_user_session_path %> or <%= link_to 'Register', new_user_registration_path %><br>
     Save and share<br>your job interests.<br>

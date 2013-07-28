@@ -7,8 +7,8 @@ class JobsController < ApplicationController
     q = params[:q]
     l = params[:l]
     start = params[:start]
-    q = "" if params[:q].nil?
-    l = "" if params[:l].nil?
+    q = "" if q.nil?
+    l = "" if l.nil?
     
     search_string = URI.escape("http://www.indeed.com/jobs?q=" + q + "&l=" + l + "&start=" + start)
 

@@ -1,3 +1,3 @@
 class Job < ActiveRecord::Base
-  attr_accessible :company, :description, :location
+  attr_accessible :title, :url, :company, :location, :description
 end

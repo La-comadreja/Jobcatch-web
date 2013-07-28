@@ -9,10 +9,10 @@ class JobsController < ApplicationController
     start = params[:start]
     q = "" if q.nil?
     l = "" if l.nil?
-    
-    search_string = URI.escape("http://www.indeed.com/jobs?q=" + q + "&l=" + l + "&start=" + start)
 
+    search_string = URI.escape("http://www.indeed.com/jobs?q=" + q + "&l=" + l + "&start=" + start)
     page = Nokogiri::HTML(open(search_string))
+
     @titles = page.css(".jobtitle")
     @hrefs = page.css(".jobtitle a")
     i = 0

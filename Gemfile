@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 require 'open-uri'
 require 'rubygems'
 
-gem 'rails', '4.0.0.rc2'
+gem 'rails', '3.2.14'
 ruby '1.9.3'
 
 # Bundle edge Rails instead:
@@ -15,8 +15,8 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', '~> 4.0.0'
-  gem 'coffee-rails', '~> 4.0.0'
+  gem 'sass-rails', '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
@@ -28,12 +28,12 @@ group :production do
   gem 'pg', '0.12.2'
 end
 
-gem 'activesupport', '4.0.0.rc2'
+gem 'activesupport', '3.2.14'
 gem 'bootstrap-sass', '2.1'
 gem 'devise'
 gem 'jquery-rails', '2.0.2'
 gem 'nokogiri'
-gem 'railties', '4.0.0.rc2'
+gem 'railties', '3.2.14'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

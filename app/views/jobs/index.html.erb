@@ -34,21 +34,24 @@
           document.nextJob.start.value = start;
           return true;
         }
-      </script> 
-      <form action="/jobs" name="nextJob" onsubmit="return increment();">
-        <input type="hidden" name="q">
-        <input type="hidden" name="l">
-        <input type="hidden" name="place">
-        <% if !@companies[j].nil? && @companies[j+1].nil? %>
-          <input type="hidden" name="nextPage" value="1">
-        <% else %>
-          <input type="hidden" name="nextPage" value="0">
-        <% end %>
-        <input type="hidden" name="start">
-        <input type="image" src="/assets/dislike.jpg" alt="Submit" />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="image" src="/assets/like.jpg" alt="Submit" />
-      </form>
+      </script>
+      <% if user_signed_in? %>
+      <% else %>
+        <form action="/jobs" name="nextJob" onsubmit="return increment();">
+          <input type="hidden" name="q">
+          <input type="hidden" name="l">
+          <input type="hidden" name="place">
+          <% if !@companies[j].nil? && @companies[j+1].nil? %>
+            <input type="hidden" name="nextPage" value="1">
+          <% else %>
+            <input type="hidden" name="nextPage" value="0">
+          <% end %>
+          <input type="hidden" name="start">
+          <input type="image" src="/assets/dislike.jpg" alt="Submit" />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="image" src="/assets/like.jpg" alt="Submit" />
+        </form>
+      <% end %>
     <% end %>              
   </body>
 </html>

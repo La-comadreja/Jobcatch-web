@@ -36,6 +36,27 @@
         }
       </script>
       <% if user_signed_in? %>
+        <% @current_job = nil %>
+        <% id = '0' %>
+        <% @jobs.each do |job| %>
+          <% if job.url[0..180] == @titles[j][:href][0..180] %>
+            <% @current_job = job %>
+            <% id = job.id %>
+            <% break %>
+          <% end %>
+        <% end %>
+        <% if @current_job.nil? %>
+          <% @current_job = Job.new %>
+          <% @current_job.url = @titles[j][:href] %>
+          <% @current_job.title = @titles[j].text %>
+          <% @current_job.company = @companies[j].text %>
+          <% @current_job.location = @locations[j].text %>
+          <% @current_job.description = @summaries[j].text %>
+          <% @current_job.save %>
+        <% end %>
+        <%= form_for :get, url: jobs_path do |f| %>
+          
+        <% end %>
       <% else %>
         <form action="/jobs" name="nextJob" onsubmit="return increment();">
           <input type="hidden" name="q">

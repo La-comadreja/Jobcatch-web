@@ -54,9 +54,10 @@
           <% @current_job.description = @summaries[j].text %>
           <% @current_job.save %>
         <% end %>
-        <%= form_for @job, url: jobs_path do |f| %>
+        <%= form_for @jobs, :method => :get, url: jobs_path do |f| %>
           <% j = params[:place].to_i %>
           <% start = params[:start].to_i %>
+          <% j += 1 %>
           <% if params[:nextPage] == "1" %>
             <% start += 10 %>
             <% j = 0 %>

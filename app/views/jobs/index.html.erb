@@ -58,12 +58,12 @@
           <% j = params[:place].to_i %>
           <% start = params[:start].to_i %>
           <% j += 1 %>
-          <% if params[:nextPage] == "1" %>
+          <% nextPage = "0" %>
+          <% nextPage = "1" if !@companies[j].nil? && @companies[j+1].nil? %>
+          <% if nextPage == "1" %>
             <% start += 10 %>
             <% j = 0 %>
           <% end %>
-          <% nextPage = "0" %>
-          <% nextPage = "1" if !@companies[j].nil? && @companies[j+1].nil? %>
 
           <%= hidden_field_tag 'q', params[:q] %>
           <%= hidden_field_tag 'l', params[:l] %>

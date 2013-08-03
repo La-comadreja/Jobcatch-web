@@ -39,7 +39,7 @@
         <% @current_job = nil %>
         <% id = '0' %>
         <% @jobs.each do |job| %>
-          <% if job.url[0..180] == @titles[j][:href][0..180] %>
+          <% if job.url[0..100] == @titles[j][:href][0..100] %>
             <% @current_job = job %>
             <% id = job.id %>
             <% break %>

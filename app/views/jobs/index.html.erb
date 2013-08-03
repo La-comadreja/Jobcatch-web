@@ -70,7 +70,9 @@
           <%= hidden_field_tag 'place', j %>
           <%= hidden_field_tag 'start', start %>
           <%= hidden_field_tag 'nextPage', nextPage %>
-          <%= f.submit %> 
+          <%= f.submit "Dislike", :type => :image, :src => "/assets/dislike.jpg" %>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= f.submit "Like", :type => :image, :src => "/assets/like.jpg" %>
         <% end %>
       <% else %>
         <form action="/jobs" name="nextJob" onsubmit="return increment();">

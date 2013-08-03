@@ -54,8 +54,22 @@
           <% @current_job.description = @summaries[j].text %>
           <% @current_job.save %>
         <% end %>
-        <%= form_for :get, url: jobs_path do |f| %>
-          
+        <%= form_for @job, url: jobs_path do |f| %>
+          <% j = params[:place].to_i %>
+          <% start = params[:start].to_i %>
+          <% if params[:nextPage] == "1" %>
+            <% start += 10 %>
+            <% j = 0 %>
+          <% end %>
+          <% nextPage = "0" %>
+          <% nextPage = "1" if !@companies[j].nil? && @companies[j+1].nil? %>
+
+          <%= hidden_field_tag 'q', params[:q] %>
+          <%= hidden_field_tag 'l', params[:l] %>
+          <%= hidden_field_tag 'place', j %>
+          <%= hidden_field_tag 'start', start %>
+          <%= hidden_field_tag 'nextPage', nextPage %>
+          <%= f.submit %> 
         <% end %>
       <% else %>
         <form action="/jobs" name="nextJob" onsubmit="return increment();">

@@ -36,12 +36,16 @@
         }
       </script>
       <% if user_signed_in? %>
+        <% if params[:commit] == "Like" %>
+          <%= "You like the previous job" %>
+        <% elsif params[:commit] == "Dislike" %>
+          <%= "You weren't interested in the previous job" %>
+        <% end %>
+
         <% @current_job = nil %>
-        <% id = '0' %>
         <% @jobs.each do |job| %>
           <% if job.url[0..100] == @titles[j][:href][0..100] %>
             <% @current_job = job %>
-            <% id = job.id %>
             <% break %>
           <% end %>
         <% end %>

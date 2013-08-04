@@ -54,7 +54,7 @@
           <% @current_job.description = @summaries[j].text %>
           <% @current_job.save %>
         <% end %>
-        <%= form_for @jobs, :method => :get, url: jobs_path do |f| %>
+        <%= form_for @likes, :method => :get, url: jobs_path do |f| %>
           <% j = params[:place].to_i %>
           <% start = params[:start].to_i %>
           <% j += 1 %>
@@ -64,6 +64,8 @@
             <% start += 10 %>
             <% j = 0 %>
           <% end %>
+          
+          <%= @current_job[:id] %>
 
           <%= hidden_field_tag 'q', params[:q] %>
           <%= hidden_field_tag 'l', params[:l] %>

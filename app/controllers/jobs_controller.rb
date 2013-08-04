@@ -3,6 +3,7 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
     @jobs = Job.all
+    @likes = Like.all
 
     q = params[:q]
     l = params[:l]

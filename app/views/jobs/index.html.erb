@@ -65,13 +65,12 @@
             <% j = 0 %>
           <% end %>
           
-          <%= @current_job[:id] %>
-
           <%= hidden_field_tag 'q', params[:q] %>
           <%= hidden_field_tag 'l', params[:l] %>
           <%= hidden_field_tag 'place', j %>
           <%= hidden_field_tag 'start', start %>
           <%= hidden_field_tag 'nextPage', nextPage %>
+          <%= hidden_field_tag 'id', @current_job[:id] %>
           <%= f.submit "Dislike", :type => :image, :src => "/assets/dislike.jpg" %>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <%= f.submit "Like", :type => :image, :src => "/assets/like.jpg" %>

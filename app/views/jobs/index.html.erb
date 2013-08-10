@@ -42,9 +42,11 @@
         <% if params[:commit] == "Like" %>
           <%= "You like the previous job" %>
           <% @like_value.like = true %>
+          <% @like_value.save %>
         <% elsif params[:commit] == "Dislike" %>
           <%= "You weren't interested in the previous job" %>
           <% @like_value.like = false %>
+          <% @like_value.save %>
         <% else %>
           <% @like_value.destroy %>
         <% end %>

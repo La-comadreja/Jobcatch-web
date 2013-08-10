@@ -60,15 +60,15 @@
         <% end %>
         <%= form_for @likes, :method => :get, url: jobs_path do |f| %>
           <% j = params[:place].to_i %>
-          <% start = params[:start].to_i %>
           <% j += 1 %>
+          <% start = params[:start].to_i %>
           <% nextPage = "0" %>
-          <% nextPage = "1" if !@companies[j].nil? && @companies[j+1].nil? %>
+          <% nextPage = "1" if !@companies[j-1].nil? && @companies[j].nil? %>
           <% if nextPage == "1" %>
             <% start += 10 %>
             <% j = 0 %>
           <% end %>
-          
+         
           <%= hidden_field_tag 'q', params[:q] %>
           <%= hidden_field_tag 'l', params[:l] %>
           <%= hidden_field_tag 'place', j %>

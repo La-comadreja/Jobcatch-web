@@ -36,10 +36,17 @@
         }
       </script>
       <% if user_signed_in? %>
+        <% @like_value = Like.new %>
+        <% @like_value.job_id = params[:id] %>
+        <% @like_value.user_id = current_user.id %>
         <% if params[:commit] == "Like" %>
           <%= "You like the previous job" %>
+          <% @like_value.like = true %>
         <% elsif params[:commit] == "Dislike" %>
           <%= "You weren't interested in the previous job" %>
+          <% @like_value.like = false %>
+        <% else %>
+          <% @like_value.destroy %>
         <% end %>
 
         <% @current_job = nil %>

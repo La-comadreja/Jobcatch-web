@@ -3,6 +3,7 @@ JobcatchWeb::Application.routes.draw do
 
   resources :jobs
   resources :likes
+  resources :users, :only => :show
 
   match "/jobs" => "jobs#index"
   match "/likes" => "likes#index"

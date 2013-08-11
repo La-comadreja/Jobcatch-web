@@ -67,7 +67,7 @@
           <% @current_job.description = @summaries[j].text %>
           <% @current_job.save %>
         <% end %>
-        <%= form_for @likes, :method => :get, url: jobs_path do |f| %>
+        <%= form_for @jobs, :method => :get, url: jobs_path do |f| %>
           <% j = params[:place].to_i %>
           <% j += 1 %>
           <% start = params[:start].to_i %>

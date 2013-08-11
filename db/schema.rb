@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20130810171109) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "title"
-    t.string   "url"
+    t.text     "url"
   end
 
   create_table "likes", :force => true do |t|

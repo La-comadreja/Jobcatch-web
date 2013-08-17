@@ -30,6 +30,7 @@ end
 
 gem 'activesupport', '3.2.14'
 gem 'bootstrap-sass', '2.1'
+gem 'declarative_authorization'
 gem 'devise'
 gem 'jquery-rails', '2.0.2'
 gem 'nokogiri'

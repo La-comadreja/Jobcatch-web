@@ -1,17 +1,17 @@
-<h2>Sign in</h2>
+<table cellspacing='0' style='font-family:arial;text-align:left;margin-left:auto;margin-right:auto;'>
+  <tr><td style='font-size:20px;color:navy'><br><b>Log In</b><br><br></td></tr>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %> 
+    <tr><td style='font-size:16px;color:#FF6600'><b>email</b></td></tr>
+    <tr><td><%= f.email_field :email, :autofocus => true %></td></tr>
+    <tr><td style='font-size:16px;color:#FF6600'><b>password</b></td></tr>
+    <tr><td><%= f.password_field :password %><br></td></tr>
+    <% if devise_mapping.rememberable? -%>
+      <tr><td><%= f.label :remember_me, :class => "checkbox inline" %>  <%= f.check_box :remember_me %><br><br></tr></td>
+    <% end -%>
+    <tr><td><%= f.submit "Log in" %></td></tr>
+  <% end %>
+</table>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
-
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
-
+<br><br>
 <%= render "devise/shared/links" %>

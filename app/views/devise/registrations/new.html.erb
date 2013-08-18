@@ -1,27 +1,23 @@
-<h2>Sign up</h2>
+<table cellspacing='0' style='font-family:arial;text-align:left;margin-left:auto;margin-right:auto;'>
+  <tr><td style='font-size:20px;color:navy'><br><b>Sign Up</b><br><br></td></tr>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+    <tr><td style='font-size:16px;color:red'><b>full name</b></td></tr>
+    <tr><td><%= f.text_field :name %></td></tr>
+    <tr><td style='font-size:16px;color:goldenrod'><b>email</b></td></tr>
+    <tr><td><%= f.email_field :email, :autofocus => true %></td></tr>
+    <tr><td style='font-size:16px;color:darkcyan'><b>password</b></td></tr>
+    <tr><td><%= f.password_field :password %></td></tr>
+    <tr><td style='font-size:16px;color:mediumblue'><b>password confirmation</b></td></tr>
+    <tr><td><%= f.password_field :password_confirmation %></td></tr>
+    <tr><td style='font-size:16px;color:#FF6600'><b>desired job</b></td></tr>
+    <tr><td><%= f.text_field :title %></td></tr>
+    <tr><td style='font-size:16px;color:#FF6600'><b>resume or brief bio (optional)</b></td></tr>
+    <tr><td><%= f.text_area :information %></td></tr>
+    <tr><td><%= f.submit "Sign up" %></td></tr>
+  <% end %>
+</table>
 
-  <div><%= f.label "Full name" %><br />
-  <%= f.text_field :name %></div>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.label "Desired job" %><br />
-  <%= f.text_field :title %></div>
-
-  <div><%= f.label "Resume or brief bio (optional)" %><br />
-  <%= f.text_area :information %></div>
-
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
-
+<br><br>
 <%= render "devise/shared/links" %>

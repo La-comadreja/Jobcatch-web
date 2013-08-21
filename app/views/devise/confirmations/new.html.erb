@@ -1,4 +1,28 @@
-<h2>Resend confirmation instructions</h2>
+<table cellspacing='0' style='font-family:arial;text-align:left;margin-left:auto;margin-right:auto;'>
+  <tr><td style='font-size:20px;color:navy'><br><b>Resend confirmation instructions</b><br><br></td></tr>
+
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+    <tr><td style='font-size:16px;color:red'><b>full name</b></td></tr>
+    <tr><td><%= f.text_field :name %></td></tr>
+    <tr><td style='font-size:16px;color:goldenrod'><b>email</b></td></tr>
+    <tr><td><%= f.email_field :email, :autofocus => true %></td></tr>
+    <tr><td style='font-size:16px;color:darkcyan'><b>password</b></td></tr>
+    <tr><td><%= f.password_field :password %></td></tr>
+    <tr><td style='font-size:16px;color:mediumblue'><b>password confirmation</b></td></tr>
+    <tr><td><%= f.password_field :password_confirmation %></td></tr>
+    <tr><td style='font-size:16px;color:#FF6600'><b>desired job</b></td></tr>
+    <tr><td><%= f.text_field :title %></td></tr>
+    <tr><td style='font-size:16px;color:#FF6600'><b>(optional) previous positions,<br>accomplishments, education</b></td></tr>
+    <tr><td><%= f.text_area :information, :size => '10x6', :placeholder => "no more than 3 sentences" %></td></tr>
+    <tr><td><%= f.submit "Sign up" %></td></tr>
+  <% end %>
+</table>
+
+<br><br>
+<%= render "devise/shared/links" %>
+
+Resend confirmation instructions</h2>
 
 <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
   <%= devise_error_messages! %>

@@ -13,8 +13,8 @@
     <tr><td><%= f.password_field :password_confirmation %></td></tr>
     <tr><td style='font-size:16px;color:#FF6600'><b>desired job</b></td></tr>
     <tr><td><%= f.text_field :title %></td></tr>
-    <tr><td style='font-size:16px;color:#FF6600'><b>resume or brief bio (optional)</b></td></tr>
-    <tr><td><%= f.text_area :information %></td></tr>
+    <tr><td style='font-size:16px;color:#FF6600'><b>(optional) previous positions,<br>accomplishments, education</b></td></tr>
+    <tr><td><%= f.text_area :information, :size => '10x6', :placeholder => "no more than 3 sentences" %></td></tr>
     <tr><td><%= f.submit "Sign up" %></td></tr>
   <% end %>
 </table>

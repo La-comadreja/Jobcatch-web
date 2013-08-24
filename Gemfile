@@ -30,11 +30,15 @@ end
 
 gem 'activesupport', '3.2.14'
 gem 'bootstrap-sass', '2.1'
+gem 'cucumber'
 gem 'declarative_authorization'
 gem 'devise'
 gem 'jquery-rails', '2.0.2'
 gem 'nokogiri'
 gem 'railties', '3.2.14'
+gem 'rspec'
+gem 'rspec-rails'
+gem 'webrat'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

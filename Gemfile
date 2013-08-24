@@ -30,9 +30,12 @@ end
 
 gem 'activesupport', '3.2.14'
 gem 'bootstrap-sass', '2.1'
+gem 'bundler'
 gem 'cucumber'
+gem 'database_cleaner', :group => :test
 gem 'declarative_authorization'
 gem 'devise'
+gem 'email_spec', :group => :test
 gem 'jquery-rails', '2.0.2'
 gem 'nokogiri'
 gem 'railties', '3.2.14'

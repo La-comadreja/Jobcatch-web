@@ -1,8 +1,19 @@
-<%= @user.name %><br />
-<%= @user.email %><br />
-Desired job: <%= @user.title %><br />
-Bio: <%= @user.information %><br /><br />
+<table cellspacing='0' style='font-family:arial;text-align:center;margin-left:auto;margin-right:auto;'>
+  <tr><td style='font-size:16px;color:red'><b><%= @user.name %></b></td></tr>
+  <tr><td style='font-size:16px;color:goldenrod'><b><%= @user.email %></b></td></tr>
+  <tr><td style='font-size:16px;color:darkcyan'><b>Desired Job: <%= @user.title %></b><br><br></td></tr>
+ 
+  <tr><td style='font-size:16px;text-align:left;color:mediumblue'><b>Bio: <%= @user.information %></b><br><br></td></tr> 
 
-<%= @user.likes %>
+  <tr><td style='font-size:16px;text-align:left;color:mediumblue'><b>Jobs Liked:</b></td></tr>
+  <% @user.likes.each do |like| %>
+    <% if like.like == true %>
+      <% job = @jobs[like.job_id.to_i] %>
+      <tr><td style='font-size:16px;color:goldenrod'><b><a href="http://www.indeed.com/<%= job.url %>" target="_blank"><%= job.title %></a></b></td></tr>
+      <tr><td style='font-size:16px;color:#FF6600'><b><%= job.company %> - <%= job.location %></b></td></tr>
+      <tr><td style='font-size:16px;color:goldenrod'><b><%= job.updated_at.strftime("%B %d, %Y") %></b><br><br></td></tr>
+    <% end %>
+  <% end %>
+</table>
 
 <%= link_to "Back", :back %>

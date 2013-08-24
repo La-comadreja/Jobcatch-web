@@ -34,4 +34,9 @@ JobcatchWeb::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  config.gem "rspec", :lib => :false, :version => ">=2.14.1"
+  config.gem "rspec-rails", :lib => :false, :version => ">=2.14.0"
+  config.gem "webrat", :lib => :false, :version => ">=0.7.3"
+  config.gem "cucumber", :lib => :false, :version => ">=1.3.6"
 end

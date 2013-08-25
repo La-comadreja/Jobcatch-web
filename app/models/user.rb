@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :likes, :class_name => 'Like', dependent: :destroy
 
-  validates :email, :presence => true, :length => { :minimum => 5, :maximum => 100 }
+  validates :email, :length => { :minimum => 5, :maximum => 100 }
   validates :name, :presence => true, :length => { :maximum => 100 }
   validates :title, :presence => true, :length => { :maximum => 150 }
   validates :information, :length => { :maximum => 600 }

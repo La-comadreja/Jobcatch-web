@@ -2,7 +2,7 @@
   <tr><td style='font-size:20px;color:navy'><br><b>Sign Up</b><br><br></td></tr>
 
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
+    <tr><td style='font-size:16px'><b><%= devise_error_messages! %></b></td></tr>
     <tr><td style='font-size:16px;color:red'><b>full name</b></td></tr>
     <tr><td><%= f.text_field :name %></td></tr>
     <tr><td style='font-size:16px;color:goldenrod'><b>email</b></td></tr>

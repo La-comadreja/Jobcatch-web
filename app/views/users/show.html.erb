@@ -8,7 +8,7 @@
   <tr><td style='font-size:16px;text-align:left;color:mediumblue'><b>Jobs Liked:</b></td></tr>
   <% @user.likes.each do |like| %>
     <% if like.like == true %>
-      <% job = @jobs[like.job_id.to_i] %>
+      <% job = @jobs[like.job_id.to_i - 1] %>
       <tr><td style='font-size:16px;color:goldenrod'><b><a href="http://www.indeed.com/<%= job.url %>" target="_blank"><%= job.title %></a></b></td></tr>
       <tr><td style='font-size:16px;color:#FF6600'><b><%= job.company %> - <%= job.location %></b></td></tr>
       <tr><td style='font-size:16px;color:goldenrod'><b><%= job.updated_at.strftime("%B %d, %Y") %></b><br><br></td></tr>

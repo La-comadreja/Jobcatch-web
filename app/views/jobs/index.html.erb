@@ -36,20 +36,18 @@
         }
       </script>
       <% if user_signed_in? %>
-        <% @like_value = Like.new %>
-        <% @like_value.job_id = params[:id] %>
-        <%= @jobs[@like_value.job_id].company %>
-        <% @like_value.user_id = current_user.id %>
-        <% if params[:commit] == "Like" %>
-          <%= "You liked the previous job" %><br><br>
-          <% @like_value.like = true %>
+        <% if params[:commit] == "Like" || params[:commit] == "Dislike" %>
+          <% @like_value = Like.new %>
+          <% @like_value.job_id = params[:id_sent] %>
+          <% @like_value.user_id = current_user.id %>
+          <% if params[:commit] == "Like" %>
+            <%= "You liked the previous job" %><br><br>
+            <% @like_value.like = true %>
+          <% elsif params[:commit] == "Dislike" %>
+            <%= "You weren't interested in the previous job" %><br><br>
+            <% @like_value.like = false %>
+          <% end %>
           <% @like_value.save %>
-        <% elsif params[:commit] == "Dislike" %>
-          <%= "You weren't interested in the previous job" %><br><br>
-          <% @like_value.like = false %>
-          <% @like_value.save %>
-        <% else %>
-          <% @like_value.destroy %>
         <% end %>
 
         <% @current_job = nil %>
@@ -84,7 +82,7 @@
           <%= hidden_field_tag 'place', j %>
           <%= hidden_field_tag 'start', start %>
           <%= hidden_field_tag 'nextPage', nextPage %>
-          <%= hidden_field_tag 'id', @current_job[:id] %>
+          <%= hidden_field_tag 'id_sent', @current_job[:id] %>
           <%= f.submit "Dislike", :type => :image, :src => "/assets/dislike.jpg" %>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <%= f.submit "Like", :type => :image, :src => "/assets/like.jpg" %>

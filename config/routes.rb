@@ -1,8 +1,10 @@
 JobcatchWeb::Application.routes.draw do
   devise_for :users
 
-  resources :jobs, :only => :index
+  resources :jobs #, :only => :index
   resources :users, :only => :show
+  resources :likes
+  match "/likes" => "likes#index"
 
   match "/jobs" => "jobs#index"
   get "home/index"  

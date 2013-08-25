@@ -2,7 +2,9 @@ class LikesController < ApplicationController
   # GET /likes
   # GET /likes.json
   def index
+    @jobs = Job.all
     @likes = Like.all
+    @users = User.all
 
     respond_to do |format|
       format.html # index.html.erb

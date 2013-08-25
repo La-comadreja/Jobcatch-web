@@ -1,12 +1,10 @@
 JobcatchWeb::Application.routes.draw do
   devise_for :users
 
-  resources :jobs
-  resources :likes
+  resources :jobs, :only => :index
   resources :users, :only => :show
 
   match "/jobs" => "jobs#index"
-  match "/likes" => "likes#index"
   get "home/index"  
 
   # The priority is based upon order of creation:

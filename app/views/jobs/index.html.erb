@@ -38,6 +38,7 @@
       <% if user_signed_in? %>
         <% @like_value = Like.new %>
         <% @like_value.job_id = params[:id] %>
+        <%= @jobs[@like_value.job_id].company %>
         <% @like_value.user_id = current_user.id %>
         <% if params[:commit] == "Like" %>
           <%= "You liked the previous job" %><br><br>

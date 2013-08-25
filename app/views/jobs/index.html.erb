@@ -48,6 +48,7 @@
             <% @like_value = Like.new %>
             <% @like_value.job_id = params[:id_sent] %>
             <% @like_value.user_id = current_user.id %>
+            <% @like_value.save %>
           <% end %>
           <% if params[:commit] == "Like" %>
             <%= "You liked the previous job" %><br><br>
@@ -56,7 +57,6 @@
             <%= "You weren't interested in the previous job" %><br><br>
             <% @like_value.like = false %>
           <% end %>
-          <% @like_value.save %>
         <% end %>
 
         <% @current_job = nil %>

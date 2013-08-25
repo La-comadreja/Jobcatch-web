@@ -38,8 +38,8 @@
       <% if user_signed_in? %>
         <% if params[:commit] == "Like" || params[:commit] == "Dislike" %>
           <% @like_value = nil %>
-          <% @likes.each do |like| %>
-            <% if like.job_id == params[:id_sent] && like.user_id == current_user.id %>
+          <%= @likes.each do |like| %>
+            <% if like.job_id.to_i == params[:id_sent].to_i && like.user_id.to_i == current_user.id.to_i %>
               <% @like_value = like %>
               <% break %>
             <% end %>

@@ -37,9 +37,18 @@
       </script>
       <% if user_signed_in? %>
         <% if params[:commit] == "Like" || params[:commit] == "Dislike" %>
-          <% @like_value = Like.new %>
-          <% @like_value.job_id = params[:id_sent] %>
-          <% @like_value.user_id = current_user.id %>
+          <% @like_value = nil %>
+          <% @likes.each do |like| %>
+            <% if like.job_id == params[:id_sent] && like.user_id == current_user.id %>
+              <% @like_value = like %>
+              <% break %>
+            <% end %>
+          <% end %>
+          <% if @like_value.nil? %>
+            <% @like_value = Like.new %>
+            <% @like_value.job_id = params[:id_sent] %>
+            <% @like_value.user_id = current_user.id %>
+          <% end %>
           <% if params[:commit] == "Like" %>
             <%= "You liked the previous job" %><br><br>
             <% @like_value.like = true %>

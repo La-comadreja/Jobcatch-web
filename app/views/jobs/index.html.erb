@@ -19,22 +19,7 @@
       <br><div style="font-size:18px;"><b><%= @titles[j].text %></b></div>
       <%= @companies[j].text %> - <%= @locations[j].text %><br><br>
       <a href="http://www.indeed.com/<%= @titles[j][:href] %>" target=_blank><%= @summaries[j].text %></a><br><br><br>
-      <script type="text/javascript">
-        var j = parseInt($.url().param('place'));
-        var start = parseInt($.url().param('start'));
-        function increment() {
-          j++;
-          document.nextJob.q.value = $.url().param('q');
-          document.nextJob.l.value = $.url().param('l');
-          if (document.nextJob.nextPage.value === "1") {
-            start += 10;
-            j = 0;
-          }
-          document.nextJob.place.value = j;
-          document.nextJob.start.value = start;
-          return true;
-        }
-      </script>
+      
       <% if user_signed_in? %>
         <% if params[:commit] == "Like" || params[:commit] == "Dislike" %>
           <% @like_value = nil %>
@@ -81,42 +66,30 @@
           <% @current_job.description = @summaries[j].text %>
           <% @current_job.save %>
         <% end %>
-        <%= form_for @jobs, :method => :get, url: jobs_path do |f| %>
-          <% j = params[:place].to_i %>
-          <% j += 1 %>
-          <% start = params[:start].to_i %>
-          <% nextPage = "0" %>
-          <% nextPage = "1" if !@companies[j-1].nil? && @companies[j].nil? %>
-          <% if nextPage == "1" %>
-            <% start += 10 %>
-            <% j = 0 %>
-          <% end %>
-         
-          <%= hidden_field_tag 'q', params[:q] %>
-          <%= hidden_field_tag 'l', params[:l] %>
-          <%= hidden_field_tag 'place', j %>
-          <%= hidden_field_tag 'start', start %>
-          <%= hidden_field_tag 'nextPage', nextPage %>
-          <%= hidden_field_tag 'id_sent', @current_job[:id] %>
-          <%= f.submit "Dislike", :type => :image, :src => "/assets/dislike.jpg" %>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <%= f.submit "Like", :type => :image, :src => "/assets/like.jpg" %>
+      <% end %>
+
+      <%= form_for @jobs, :method => :get, url: jobs_path do |f| %>
+        <% j = params[:place].to_i %>
+        <% j += 1 %>
+        <% start = params[:start].to_i %>
+        <% nextPage = "0" %>
+        <% nextPage = "1" if !@companies[j-1].nil? && @companies[j].nil? %>
+        <% if nextPage == "1" %>
+          <% start += 10 %>
+          <% j = 0 %>
         <% end %>
-      <% else %>
-        <form action="/jobs" name="nextJob" onsubmit="return increment();">
-          <input type="hidden" name="q">
-          <input type="hidden" name="l">
-          <input type="hidden" name="place">
-          <% if !@companies[j].nil? && @companies[j+1].nil? %>
-            <input type="hidden" name="nextPage" value="1">
-          <% else %>
-            <input type="hidden" name="nextPage" value="0">
-          <% end %>
-          <input type="hidden" name="start">
-          <input type="image" src="/assets/dislike.jpg" alt="Submit" />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <input type="image" src="/assets/like.jpg" alt="Submit" />
-        </form>
+         
+        <%= hidden_field_tag 'q', params[:q] %>
+        <%= hidden_field_tag 'l', params[:l] %>
+        <%= hidden_field_tag 'place', j %>
+        <%= hidden_field_tag 'start', start %>
+        <%= hidden_field_tag 'nextPage', nextPage %>
+        <% if user_signed_in? %>
+          <%= hidden_field_tag 'id_sent', @current_job[:id] %>
+        <% end %>
+        <%= f.submit "Dislike", :type => :image, :src => "/assets/dislike.jpg" %>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= f.submit "Like", :type => :image, :src => "/assets/like.jpg" %>
       <% end %>
     <% end %>              
   </body>
